@@ -9,32 +9,32 @@ export const NewsPage = () => {
   const contextRef = createRef();
 
   return (
-    <Grid.Row>
-      <div ref={contextRef}>
-      <Grid.Column width={10}>
-        <List link>
-          {news.map(article => (
-            <List.Item as={Link} to={`/news/${article.id}`} key={article.id}>
-              <Segment>
-                <Grid columns='equal'>
-                  <Grid.Column width={12}>
-                    {article.title}
-                  </Grid.Column>
-                  {/* <Grid.Column>
+    <div ref={contextRef}>
+      <Grid columns={2}>
+        <Grid.Column >
+          <List link>
+            {news.map(article => (
+              <List.Item as={Link} to={`/news/${article.id}`} key={article.id}>
+                <Segment>
+                  <Grid columns='equal'>
+                    <Grid.Column>
+                      {article.title}
+                    </Grid.Column>
+                    {/* <Grid.Column>
                   <Button size="small">Click Here</Button>
                 </Grid.Column> */}
-                </Grid>
-              </Segment>
-            </List.Item>
-          ))}
-        </List>
-      </Grid.Column>
-      </div>
-        <Grid.Column width={6}>
+                  </Grid>
+                </Segment>
+              </List.Item>
+            ))}
+          </List>
+        </Grid.Column>
+        <Grid.Column>
           <Sticky context={contextRef} pushing>
             <Route path="/news/:articleID" component={Article} />
           </Sticky>
         </Grid.Column>
-    </Grid.Row>
+      </Grid>
+    </div>
   )
 };

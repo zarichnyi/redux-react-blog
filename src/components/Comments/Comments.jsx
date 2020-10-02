@@ -15,19 +15,18 @@ export const Comments = () => {
       .then(commentsFromServer => (
         dispatch(setCommentsAction(commentsFromServer))
       ))
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <Comment.Group>
       {comments.map(comments => (
         <Comment key={comments.id}>
           <Comment.Content>
-            <Comment.Author as='a'>{comments.postId}</Comment.Author>
+            <Comment.Author as='a'>{comments.email}</Comment.Author>
             <Comment.Text>{comments.body}</Comment.Text>
           </Comment.Content>
         </Comment>
       ))}
-
     </Comment.Group>
   )
 }
