@@ -27,7 +27,11 @@ export const Users = () => {
       <Dropdown
         placeholder="All"
         selection options={users}
-        onChange={(event, data) => dispatch(filterNewsAction(data.value))}
+        defaultValue={(JSON.parse(localStorage.getItem('choosenUser')))}
+        onChange={(event, data) => {
+          dispatch(filterNewsAction(data.value));
+          localStorage.setItem('choosenUser', JSON.stringify(data.value));
+        }}
       />
     </Menu>
   )
