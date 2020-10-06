@@ -5,7 +5,9 @@ import * as api from './api/apiNews';
 import { NewsPage } from './components/NewsPage/newsPage';
 import { setNewsAction, filterNewsAction } from './redux/news';
 import { Users } from './components/Users/Users';
-import { AddUser } from './components/Users/AddUser';
+import { AddUser } from './components/AddUser/AddUser';
+import { PopularNews } from './components/PopularNews/PopularNews';
+import { LatestNews } from './components/LatestNews/LatestNews';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,10 +16,10 @@ function App() {
     api.getNews()
       .then(newsFromServer => {
         if (JSON.parse(localStorage.getItem('news'))) {
-           dispatch(setNewsAction(JSON.parse(localStorage.getItem('news'))));
+          dispatch(setNewsAction(JSON.parse(localStorage.getItem('news'))));
         } else {
-           dispatch(setNewsAction(newsFromServer));
-           localStorage.setItem('news', JSON.stringify(newsFromServer));
+          dispatch(setNewsAction(newsFromServer));
+          localStorage.setItem('news', JSON.stringify(newsFromServer));
         }
 
         if (JSON.parse(localStorage.getItem('choosenUser'))) {
@@ -30,7 +32,9 @@ function App() {
     <Container>
       <Segment>
         <Users />
-        <AddUser/>
+        <AddUser />
+        <PopularNews />
+        <LatestNews />
       </Segment>
       <Segment>
         <NewsPage />

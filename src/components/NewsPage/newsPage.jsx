@@ -1,25 +1,14 @@
 import React, { createRef } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { List, Segment, Grid, Sticky } from 'semantic-ui-react';
 import { Article } from '../Article/Article';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { setViews } from '../../redux/news';
 
 export const NewsPage = () => {
-  const [countViews, setCountViews] = useState('');
   const news = useSelector((state) => state.news);
   const contextRef = createRef();
-
-  // useEffect(() => {
-  //   const addCount = (articleId) => {
-  //     if (Object.keys(countViews).includes(articleId)) {
-  //       setCountViews(articleId = countViews[articleId] + 1)
-  //     } else {
-  //       setCountViews({ articleId: 1 })
-  //     }
-  //   }
-  // }, [countViews])
+  const dispatch = useDispatch();
 
   return (
     <div ref={contextRef}>
@@ -31,12 +20,18 @@ export const NewsPage = () => {
                 as={Link}
                 to={`/news/${article.id}`}
                 key={article.id}
-                // onClick={addCount(article.id)}
+                onClick={() => dispatch(setViews(article.id))}
               >
                 <Segment>
                   <Grid columns='equal'>
-                    <Grid.Column>
+                    <Grid.Column style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span>
                       {article.title}
+                      </span>
+                      <span style={{ color: 'blue' }}>
+                        Views:
+                      {article.views}
+                      </span>
                     </Grid.Column>
                   </Grid>
                 </Segment>
