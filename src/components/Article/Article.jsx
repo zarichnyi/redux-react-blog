@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Card, Button, Popup, Header, Form, TextArea } from 'semantic-ui-react';
+import { Card, Button, Popup, Header, Form, TextArea, Segment } from 'semantic-ui-react';
 import { Comments } from '../Comments/Comments';
 import { editTitle, editBody, deleteArticle, filterNewsAction } from '../../redux/news';
 
@@ -11,6 +11,7 @@ export const Article = () => {
   const article = useSelector(state => (state.news).find(item => item.id === +articleID));
   const [editingTitle, setEditingTitle] = useState(false);
   const [editedTitle, setEditedTitle] = useState('');
+
 
   const [editingBody, setEditingBody] = useState(false);
   const [editedBody, setEditedBody] = useState('');
@@ -54,7 +55,7 @@ export const Article = () => {
   return (
     <>
       { article &&
-        <Card>
+        <Card style={{ width: '100%'}}>
           <Card.Content>
             <Popup
               content='Edit title'
@@ -103,7 +104,9 @@ export const Article = () => {
               }
             />
             {!editingBody ?
-              <Card.Content description={article.body} />
+              <Segment>
+                <Card.Content description={article.body} />
+              </Segment>
               :
               <Form>
                 <TextArea

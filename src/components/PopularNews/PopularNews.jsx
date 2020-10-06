@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button } from 'semantic-ui-react';
-import { sortByPopularity } from '../../redux/news';
+import { sortByPopularity, filterNewsAction } from '../../redux/news';
 
 export const PopularNews = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,10 @@ export const PopularNews = () => {
     <>
       <Button
         style={{ marginLeft: 40 }}
-        onClick={() => dispatch(sortByPopularity())}
+        onClick={() => {
+          dispatch(sortByPopularity())
+          dispatch(filterNewsAction(JSON.parse(localStorage.getItem('choosenUser'))));
+        }}
       >
         Popular News
       </Button>
