@@ -10,8 +10,9 @@ const SET_VIEWS = 'setViews';
 const SORT_BY_POPULARITY = 'sortByPopularity';
 const LATEST_NEWS = 'latestNews';
 
-export const latestNews = () => ({
+export const latestNews = (lastNewsToogler) => ({
   type: LATEST_NEWS,
+  lastNewsToogler,
 })
 
 export const sortByPopularity = () => ({
@@ -123,9 +124,13 @@ const newsReducer = (state = initialState, action) => {
       return sortNews;
 
     case LATEST_NEWS:
-      const lastNews = JSON.parse(localStorage.getItem('news')).sort((a, b) => (
-        b.id - a.id
-      ))
+      const lastNews = JSON.parse(localStorage.getItem('news')).sort((a, b) => {
+        if (action.lastNewsToogler) {
+          return a.id - b.id
+        } else {
+          return b.id - a.id
+        }
+      })
       localStorage.setItem('news', JSON.stringify(lastNews))
       return lastNews;
 

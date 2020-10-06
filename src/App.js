@@ -5,7 +5,7 @@ import * as api from './api/apiNews';
 import { NewsPage } from './components/NewsPage/newsPage';
 import { setNewsAction, filterNewsAction } from './redux/news';
 import { Users } from './components/Users/Users';
-import { AddUser } from './components/AddUser/AddUser';
+import { AddUser } from './components/AddArticle/AddArticle';
 import { PopularNews } from './components/PopularNews/PopularNews';
 import { LatestNews } from './components/LatestNews/LatestNews';
 

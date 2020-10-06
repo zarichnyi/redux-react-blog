@@ -39,7 +39,7 @@ export const NewsPage = () => {
                   <Grid columns='equal'>
                     <Grid.Column style={{ display: 'flex', justifyContent: 'space-between' }}>
                       <span>
-                        {article.title}{article.id}
+                        {article.title}
                       </span>
                       <span style={{ color: 'blue' }}>
                         <Statistic size='mini'>

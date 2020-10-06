@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, Input, TextArea, Segment, Dropdown } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { AddArticle } from '../../redux/news';
+import { AddArticle, filterNewsAction } from '../../redux/news';
 
 export const AddUser = () => {
   const users = useSelector(state => (state.users).map(item => ({
@@ -39,6 +39,7 @@ export const AddUser = () => {
               onSubmit={(event => {
                 event.preventDefault();
                 applyData();
+                dispatch(filterNewsAction(JSON.parse(localStorage.getItem('choosenUser'))));
               })}
             >
               <Input

@@ -21,6 +21,7 @@ export const Comments = () => {
     <Comment.Group>
       {comments.map(comments => (
         <Comment key={comments.id}>
+          <Comment.Avatar as='a' src='https://react.semantic-ui.com/images/avatar/small/christian.jpg' />
           <Comment.Content>
             <Comment.Author as='a'>{comments.email}</Comment.Author>
             <Comment.Text>{comments.body}</Comment.Text>
