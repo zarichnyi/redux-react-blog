@@ -6,7 +6,7 @@ import { latestNews, filterNewsAction } from '../../redux/news';
 
 export const LatestNews = () => {
   const dispatch = useDispatch();
-  const [lastNewsToogler, setLastNewsToogler] = useState(false)
+  const [lastNewsToogler, setLastNewsToogler] = useState(false);
 
   return (
     <>

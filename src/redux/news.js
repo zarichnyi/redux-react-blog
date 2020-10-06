@@ -101,7 +101,7 @@ const newsReducer = (state = initialState, action) => {
 
     case ADD_ARTICLE:
       const addArticleItem = JSON.parse(localStorage.getItem('news'))
-      addArticleItem.push({ userId: action.userId, id: action.articleId, title: action.title, body: action.body, views: 0 })
+      addArticleItem.unshift({ userId: action.userId, id: action.articleId, title: action.title, body: action.body, views: 0 })
       localStorage.setItem('news', JSON.stringify(addArticleItem));
       return addArticleItem;
 
