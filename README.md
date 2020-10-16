@@ -4,6 +4,11 @@
  - React;
  - Redux;
  - React Router;
+ - Local Storage
  - Semantic UI React;
+ 
+ ## About
+ 
+  
 
 
